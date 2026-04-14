@@ -284,3 +284,24 @@ function applyGlobalFont() {
     }
     alert("字体已保存至全局！");
 }
+// ============================
+// 全屏 API 逻辑 (主要针对安卓/PC)
+// ============================
+function requestAndroidFullscreen() {
+    // 获取整个 HTML 文档对象
+    const docEl = document.documentElement;
+
+    // 兼容不同浏览器的全屏请求方法
+    const requestFullScreen = docEl.requestFullscreen || 
+                              docEl.mozRequestFullScreen || 
+                              docEl.webkitRequestFullScreen || 
+                              docEl.msRequestFullscreen;
+                              
+    if (requestFullScreen) {
+        requestFullScreen.call(docEl).catch(err => {
+            console.log("全屏请求被浏览器拦截: ", err);
+        });
+    } else {
+        alert("您的设备或浏览器不支持一键全屏，iOS用户请点击底部浏览器分享按钮，选择“添加到主屏幕”。");
+    }
+}
