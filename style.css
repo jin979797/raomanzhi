@@ -90,6 +90,7 @@ body {
     font-weight: 600;
     font-size: 15px;
     pointer-events: none; /* 让点击穿透状态栏 */
+   top: env(safe-area-inset-top, 0px);
 }
 
 .status-left {
